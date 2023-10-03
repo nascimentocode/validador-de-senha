@@ -1,5 +1,3 @@
-# Gera uma resposta aleatoria se vai ter ou nao um caractere minusculo, maiusculo ...
-
 from random import choice, randint, getrandbits
 import string
 
@@ -21,8 +19,6 @@ def generatePassword(char):
 def main():
     passwords = []
 
-    print("==================== GERADOR DE SENHA ====================\n")
-
     for i in range(25):
         listChar = [string.ascii_lowercase, string.ascii_uppercase, string.digits, string.punctuation]
         l = []
@@ -36,4 +32,4 @@ def main():
 
         passwords.append(generatePassword(char))
 
-    print(f"Suas senhas estão prontas para testes: {passwords}")
+    return passwords
