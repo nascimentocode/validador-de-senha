@@ -19,49 +19,21 @@ def generatePassword(char):
     return password
 
 def main():
-    listChar = [string.ascii_lowercase, string.ascii_uppercase, string.digits, string.punctuation]
     passwords = []
 
     print("==================== GERADOR DE SENHA ====================\n")
 
-    # questions = ["Você quer que sua senha contenha caracteres minusculos? S/N\n", 
-    #                 "Você quer que sua senha contenha caracteres maiusculos? S/N\n", 
-    #                 "Você quer que sua senha contenha números? S/N\n",
-    #                 "Você quer que sua senha contenha caracter especial? S/N\n"]
-    
-    # for index, question in enumerate(questions):
-    #     result = input(question)
-
-    #     if result.upper() == 'N':
-    #         listChar.pop(index)
-
-    # S S S S
-    # N N N N
-
-    # N S S S
-    # S N S S
-    # S S N S
-    # S S S N
-
-    # S N N N
-    # N S N N
-    # N N S N
-    # N N N S
-
-    # N N S S
-    # S S N N
-    # N S N S
-    # S N S N
-
     for i in range(25):
+        listChar = [string.ascii_lowercase, string.ascii_uppercase, string.digits, string.punctuation]
+        l = []
         for j in range(4):
             isTrue = bool(getrandbits(1))
             if not isTrue:
-                print(f"Tentei eliminar o {j}")
-                listChar.pop(j)
-                j -= 1
+                l.append(listChar[j])
 
-        char = transformListIntoString(listChar)
-        passwords.insert(generatePassword(char))
+        #char = transformListIntoString(set(listChar) - set(l))
+        char = transformListIntoString(set(listChar) - set([]))
+
+        passwords.append(generatePassword(char))
 
     print(f"Suas senhas estão prontas para testes: {passwords}")
